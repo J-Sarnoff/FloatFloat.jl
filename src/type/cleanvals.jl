@@ -1,4 +1,6 @@
 
+const epseps1 = eps(eps(1.0))
+
 function clean(x::DD)
     if (abs(x.hi) <= epseps1)
         zero(DD)
