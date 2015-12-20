@@ -13,8 +13,8 @@ Julia is willing to install locally your own impression:
 ```julia
 using FloatFloat
 
-dd10 = DD(10)
-ddpi = DD( nearest2( big(pi) )... )
+dd10 = DD( 10 )
+ddpi = DD( big(pi) )
 ddpi.hi, ddpi.lo
 
 showcompact(ddpi)
