@@ -43,6 +43,7 @@ include("number/compare.jl")
 include("number/inquire.jl")
 include("number/portion.jl")
 
+include("arith/of2pow.jl")
 include("arith/add.jl")
 include("arith/sub.jl")
 include("arith/mul.jl")
