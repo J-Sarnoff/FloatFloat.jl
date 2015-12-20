@@ -13,13 +13,14 @@ import Base: convert, promote_rule,
     (+),(-),(*),(/),(\), 
     round, floor, ceil, trunc, fld, cld,
     div, rem, divrem, mod, fldmod, (%),
-    sqrt, hypot, (^), fma,
+    sqrt, hypot, (^), fma 
+#=
     exp, log, log2, log10, expm1, log1p,
     sin, cos, tan, csc, sec, cot,
     sinh, cosh, tanh, csch, sech, coth,
     asin, acos, atan, acsc, asec, acot, atan2,
     asinh, acosh, atanh, acsch, asech, acoth
-
+ =#
 
 export FF,
        iszero, isnotzero
