@@ -1,4 +1,4 @@
-typealias SignedInt Unions{Int64,Int32}
+typealias SignedInt Union{Int64,Int32}
 
 DD(a::Float64) = DD(a,zero(Float64))
 DD{T<:Float64}(a::Tuple{T}) = DD(a[1])
