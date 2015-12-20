@@ -23,4 +23,9 @@ showcompact(ddsqrt2*ddrecip)
 tst = [(ddsqrt2*ddpi*ddrecip - ddpi), (ddpi - ddsqrt2*ddpi*ddrecip)]
 tidy(tst)
 
+
+using Polynomials
+p = Poly([4,-2,-1,5,1,-1]);
+polyval(p, ddsqrt2)
+
 ```
