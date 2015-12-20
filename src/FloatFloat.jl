@@ -2,7 +2,7 @@
 
 module FloatFloat
 
-                                                #   FloatFloat
+#                                                   FloatFloat
 import Base: convert, promote_rule,             # <--------------
     read, write, show, showcompact,             #  dispatching  |
     string, parse, hex,                         #               |
