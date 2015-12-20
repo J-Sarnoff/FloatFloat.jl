@@ -18,6 +18,9 @@ ddpi = DD( big(pi) )
 ddsqrt2 = sqrt( DD( 2 ) )
 
 ddrecip = 1/ddsqrt2
-showcompact(ddsqrt2*drecip)
+showcompact(ddsqrt2*ddrecip)
+
+tst = [(ddsqrt2*ddpi*ddrecip - ddpi), (ddsqrt2*ddpi*ddrecip - ddpi), (ddsqrt2*ddpi*ddrecip - ddpi)]
+clean(tst)
 
 ```
