@@ -51,8 +51,4 @@ include("arith/sqrt.jl")
 
 
 
-
-
-
-
 end # module FloatFloat
