@@ -46,8 +46,7 @@ convert(::Type{DD}, x::Integer) = convert(DD, convert(Float64, convert(Int64,x))
 convert(::Type{DD}, x::AbstractFloat) = convert(DD, convert(Float64,x))
 convert(::Type{Integer}, x::DD) = convert(Int64, x.hi) + trunc(Int64, trunc(x.lo))
 convert(::Type{AbstractFloat}, x::DD) = x.hi
-promote_rule(::Type{DD}, ::Type{Integer}) = DD
-promote_rule(::Type{DD}, ::Type{AbstractFloat}) = DD
+
 
 convert(::Type{DD}, a::Tuple{Float64}) = DD(a[1])
 convert(::Type{DD}, a::Tuple{Float64,Float64}) = DD(a[1],a[2])
@@ -78,8 +77,8 @@ convert{I<:Irrational}(::Type{DD}, x::I) = convert(DD, convert(BigFloat,x))
 convert{T<:DD}(::Type{AbstractFloat}, a::T) = a.hi
 convert{T<:DD}(::Type{Integer}, a::T) = convert(Int64, a.hi) + trunc(Int64, a.hi)
 
-for T in (:Float64, :Float32, :Float16, :Int64, :Int32, :Int16)
+for T in (:Float64, :Float32, :Float16, :AbstractFloat, 
+          :Int64,   :Int32,   :Int16,   :Integer)
    @eval promote_rule(::Type{DD}, ::Type{($T)}) = DD
 end
 promote_rule{I<:Irrational}(::Type{DD}, ::Type{I}) = DD
-
