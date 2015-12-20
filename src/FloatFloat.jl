@@ -35,7 +35,7 @@ include("module/RoundFast.jl/src/RoundFast.jl")
 using .RoundFast
 
 
-include("type/FF.jl")
+include("type/DD.jl")
 include("type/conversion.jl")
 include("type/io.jl")
 
