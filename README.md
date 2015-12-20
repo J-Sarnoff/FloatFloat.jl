@@ -13,9 +13,9 @@ Julia is willing to install locally your own impression:
 ```julia
 using FloatFloat
 
-ff10 = FF(10)
-ffpi = FF( nearest2( big(pi) )... )
-ffpi.hi, ffpi.lo
+dd10 = DD(10)
+ddpi = DD( nearest2( big(pi) )... )
+ddpi.hi, ffpi.lo
 
-showcompact(ffpi)
+showcompact(ddpi)
 ```
