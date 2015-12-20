@@ -1,3 +1,5 @@
+module ErrorFree
+
 
 @inline function eftSquare(a::Float64)
     x = a * a
@@ -131,3 +133,4 @@ end
 end
 
 
+end # module ErrorFree
