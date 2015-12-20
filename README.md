@@ -17,5 +17,5 @@ ff10 = FF(10)
 ffpi = FF( nearest2( big(pi) )... )
 ffpi.hi, ffpi.lo
 
-showcompact(fpi)
+showcompact(ffpi)
 ```
