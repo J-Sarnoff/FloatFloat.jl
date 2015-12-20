@@ -6,5 +6,5 @@ issubnormal(a::DD)  = issubnormal(a.hi)
 
 iszero(a::DD)       = (a.hi == zero(typeof(a.hi)))
 ispos(a::DD)        = (a.hi >= zero(typeof(a.hi)))
-ispoz(a::DD)        = !signbit(a.hi)
+ispoz(a::DD)        = !signbit(a.hi)                   # positive or zero, nonnegative
 isneg(a::DD)        = signbit(a.hi)
