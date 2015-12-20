@@ -23,8 +23,8 @@ import Base: convert, promote_rule,             # <--------------
     asinh, acosh, atanh, acsch, asech, acoth
  =#
 
-export DD,    # constructor
-       fluff  # softens (zeros low order part if eps(eps(high order part)) >= low order part)
+export DD,     # constructor
+       tidyup  # clean up numerical noise
 
 
 include("module/ErrorFree.jl/src/ErrorFree.jl")
