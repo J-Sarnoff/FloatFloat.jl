@@ -25,7 +25,7 @@ import Base: convert, promote_rule,             # <--------------
 
 export DD,      # constructor
        fluff,   # softens (zeros low order part if eps(eps(high order part)) >= low order part)
-       nearest2 # construct DD from a BigFloat expression, dd = DD(nearest2(exp(BigFloat(1))))
+       nearest2 # construct DD from a BigFloat expr, dd = DD( nearest2( exp(BigFloat(1)) )... )
 
 
 include("module/ErrorFree.jl/src/ErrorFree.jl")
