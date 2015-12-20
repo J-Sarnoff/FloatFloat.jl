@@ -20,7 +20,6 @@ end
 @inline copysign(a::DD,b::DD) = copysign(a,b.hi)
 
 
-
 function frexp(a::DD)
     frhi, xphi = frexp(a.hi)
     frlo, xplo = frexp(a.lo)
@@ -31,3 +30,30 @@ function ldexp(a::DD,xp::Int)
     DD(ldexp(a.hi,xp),ldexp(a.lo,xp))
 end
 ldexp{I<:Integer}(fx::Tuple{DD,I}) = ldexp(fx...)
+
+
+for (fn) in (:floor, :ceil, :round)
+  @eval begin
+    function ($fn)(a::DD)
+        hi = ($fn)(a.hi)
+        lo = 0.0
+        if (hi == a.hi)
+            lo = ($fn)(a.lo)
+            hi,lo = eftSum2inOrder(hi,lo)
+        end
+        DD(hi,lo)
+    end    
+  end        
+end
+
+function (trunc)(a::DD)
+    a.hi >= zero(Float64) ? floor(a) : ceil(a)
+end
+
+"""
+stretch is the opposite of trunc()
+it extends to the nearest integer away from zero
+"""
+function (stretch)(a::DD)
+    a.hi >= zero(Float64) ? ceil(a) : floor(a)
+end
