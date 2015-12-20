@@ -1,5 +1,13 @@
 module ErrorFree
 
+export eftRecip, eftSquare, eftCube, 
+       eftSqrt,  eftRecipSqrt, # see comment for eftSqrt
+       eftSum2,  eftSum2inOrder, eftDiff2, eftDiff2inOrder, 
+       eftProd2, eftDiv2,
+       eftSum3,  eftSum3as2, eftSum3inOrder, eftSum3inOrderAs2,
+       eftProd3, eftProd3as2,
+       eftFMA,   eftFMS
+       
 
 @inline function eftSquare(a::Float64)
     x = a * a
