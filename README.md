@@ -4,11 +4,12 @@
                       Jeffrey A. Sarnoff                     2015-Dec-20
 ```                    
 
+
+##### User Manual
+
 Julia is willing to install locally your own impression:  
 >      Pkg.clone("https://github.com/J-Sarnoff/FloatFloat.jl")        
 
-######*this is the entire manual*
-    
     
 ```julia
 using FloatFloat
