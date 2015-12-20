@@ -58,9 +58,7 @@ convert{T<:Signed}(::Type{DD}, a::Rational{T}) = convert(BigFloat, a)
 
   
 function convert(::Type{DD}, a::BigFloat)
-   hi = convert(Float64, a)
-   hs = parse(BigFloat,string(hi))
-   lo = convert(Float64, (a-hs))
+   hi,lo = nearest2(a)
    DD(hi,lo)
 end   
 convert(::Type{BigFloat}, a::DD) = parse(BigFloat,string(a.hi)) + parse(BigFloat,string(a.lo))
