@@ -20,7 +20,7 @@ ddsqrt2 = sqrt( DD( 2 ) )
 ddrecip = 1/ddsqrt2
 showcompact(ddsqrt2*ddrecip)
 
-tst = [(ddsqrt2*ddpi*ddrecip - ddpi), (ddsqrt2*ddpi*ddrecip - ddpi), (ddsqrt2*ddpi*ddrecip - ddpi)]
+tst = [(ddsqrt2*ddpi*ddrecip - ddpi), (ddpi - ddsqrt2*ddpi*ddrecip)]
 clean(tst)
 
 ```
