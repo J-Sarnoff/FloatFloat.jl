@@ -5,7 +5,7 @@
 ```                    
 
 
-##### the user manual
+#### user manual
 
 Pkg.clone("https://github.com/J-Sarnoff/FloatFloat.jl")        
 
