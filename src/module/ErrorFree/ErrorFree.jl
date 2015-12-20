@@ -1,5 +1,7 @@
 module ErrorFree
 
+import Base:fma
+
 export eftRecip, eftSquare, eftCube, 
        eftSqrt,  eftRecipSqrt, # see comment for eftSqrt
        eftSum2,  eftSum2inOrder, eftDiff2, eftDiff2inOrder, 
