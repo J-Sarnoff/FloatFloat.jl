@@ -81,4 +81,4 @@ function nnear(n::Int,x::BigFloat)
  end
 
 nearest2(x::BigFloat) = nnear(2,x)
-nearest3(x::BigFloat) = nnear(3,x)
+
