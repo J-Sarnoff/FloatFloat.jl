@@ -12,7 +12,7 @@ function eftCube(a::Float64)
     x,y
 end
 
-# sassafrass! 'y' must be negated to get the right result
+# sassafrass! 'y' must be negated
 #
 @inline function eftRecip(a::Float64)
      x = one(Float64)/a
@@ -76,7 +76,7 @@ end
     x,y
 end
 
-# sassafrass!  'y' must be negated to get the right result
+# sassafrass!  'y' must be negated
 #
 @inline function eftDiv2{T<:Float64}(a::T,b::T)
      x = a/b
