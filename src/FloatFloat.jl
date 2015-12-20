@@ -2,18 +2,19 @@
 
 module FloatFloat
 
-
-import Base: convert, promote_rule,
-    read, write, show, showcompact, 
-    string, parse, hex,
-    zero, one, isinf, isnan, isfinite,
-    abs, sign, signbit, copysign, flipsign,
-    isequal, isless, (<),(<=),(==),(>=),(>),
-    ldexp, frexp, modf,
-    (+),(-),(*),(/),(\), 
-    round, floor, ceil, trunc, fld, cld,
-    div, rem, divrem, mod, fldmod, (%),
-    sqrt, hypot, (^), fma 
+                                                #   FloatFloat
+import Base: convert, promote_rule,             # <--------------
+    read, write, show, showcompact,             #  dispatching  |
+    string, parse, hex,                         #               |
+    zero, one, isinf, isnan, isfinite,          #               |
+    abs, sign, signbit, copysign, flipsign,     #               |    
+    isequal, isless, (<),(<=),(==),(>=),(>),    #               |
+    ldexp, frexp, modf,                         #               |
+    (+),(-),(*),(/),(\),                        #               |
+    sqrt, hypot,                                #               |
+    round, floor, ceil, trunc, fld, cld,        #               |    
+    div, rem, divrem, mod, fldmod, (%),         # <--------------
+    (^), fma
 #=
     exp, log, log2, log10, expm1, log1p,
     sin, cos, tan, csc, sec, cot,
