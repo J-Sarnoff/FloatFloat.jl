@@ -15,7 +15,7 @@ using FloatFloat
 
 dd10 = DD(10)
 ddpi = DD( nearest2( big(pi) )... )
-ddpi.hi, ffpi.lo
+ddpi.hi, ddpi.lo
 
 showcompact(ddpi)
 ```
