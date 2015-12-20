@@ -23,7 +23,7 @@ import Base: convert, promote_rule,             # <--------------
     asinh, acosh, atanh, acsch, asech, acoth
  =#
 
-export FF,    # constructor
+export DD,    # constructor
        fluff  # softens (zeros low order part if eps(eps(high order part)) >= low order part)
 
 
