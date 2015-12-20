@@ -27,6 +27,14 @@ export FF,    # constructor
        fluff  # softens (zeros low order part if eps(eps(high order part)) >= low order part)
 
 
+include("module/ErrorFree/ErrorFree.jl")
+using .ErrorFree
+include("module/Adjacent/Adjacent.jl")
+using .Adjacent
+include("module/RoundFast/RoundFast.jl")
+using .RoundFast
+
+
 include("type/FF.jl")
 include("type/conversion.jl")
 include("type/io.jl")
@@ -34,6 +42,13 @@ include("type/io.jl")
 include("number/compare.jl")
 include("number/inquire.jl")
 include("number/portion.jl")
+
+include("arith/add.jl")
+include("arith/sub.jl")
+include("arith/mul.jl")
+include("arith/div.jl")
+include("arith/sqrt.jl")
+
 
 
 
