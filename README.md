@@ -15,7 +15,9 @@ using FloatFloat
 
 dd10 = DD( 10 )
 ddpi = DD( big(pi) )
-ddpi.hi, ddpi.lo
+ddsqrt2 = sqrt( DD( 2 ) )
 
-showcompact(ddpi)
+ddrecip = 1/ddsqrt2
+showcompact(ddsqrt2*drecip)
+
 ```
