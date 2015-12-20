@@ -23,8 +23,8 @@ import Base: convert, promote_rule,             # <--------------
     asinh, acosh, atanh, acsch, asech, acoth
  =#
 
-export DD,     # constructor
-       tidyup  # clean up numerical noise
+export DD,   # constructor
+       tidy  # cleans up numerical noise (!! look at the data before tidying up !!)
 
 
 include("module/ErrorFree.jl/src/ErrorFree.jl")
@@ -39,7 +39,7 @@ include("type/DD.jl")
 include("type/conversion.jl")
 include("type/nearest.jl")
 include("type/io.jl")
-include("type/cleanvals.jl")
+include("type/tidyval.jl")
 
 include("number/compare.jl")
 include("number/inquire.jl")
