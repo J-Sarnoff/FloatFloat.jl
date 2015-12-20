@@ -7,9 +7,10 @@
 Julia is willing to install locally your own impression:  
 >      Pkg.clone("https://github.com/J-Sarnoff/FloatFloat.jl")        
 
-#####*easy-peasy*
+####*easy-peasy*
     
     
+```julia
 using FloatFloat
 
 ff10 = FF(10)
@@ -17,4 +18,4 @@ ffpi = FF( nearest2( big(pi) )... )
 ffpi.hi, ffpi.lo
 
 showcompact(fpi)
-
+```
