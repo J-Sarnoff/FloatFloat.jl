@@ -11,7 +11,7 @@ function tidy(x::DD)
     end
 end
 
-tidy(v::Vector{DD}) = [clean(x) for x in v]
+tidy(v::Vector{DD}) = [tidy(x) for x in v]
 tidy(m::Matrix{DD}) = reshape([tidy(x) for x in m],size(m))
 tidy(a::Array{DD})  = reshape([tidy(x) for x in a],size(a))
 
