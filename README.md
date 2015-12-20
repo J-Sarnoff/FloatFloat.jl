@@ -7,7 +7,7 @@
 Julia is willing to install locally your own impression:  
 >      Pkg.clone("https://github.com/J-Sarnoff/FloatFloat.jl")        
 
-######*easy is it is easy*
+######*this is the entire manual*
     
     
 ```julia
