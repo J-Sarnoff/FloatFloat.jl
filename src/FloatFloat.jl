@@ -39,6 +39,7 @@ include("type/DD.jl")
 include("type/conversion.jl")
 include("type/nearest.jl")
 include("type/io.jl")
+include("type/cleanvals.jl")
 
 include("number/compare.jl")
 include("number/inquire.jl")
