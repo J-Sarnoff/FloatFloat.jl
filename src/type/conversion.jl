@@ -3,8 +3,6 @@ DD(a::Float64) = DD(a,zero(Float64))
 DD{T<:Float64}(a::Tuple{T}) = DD(a[1])
 DD{T<:Float64}(a::Tuple{T,T}) = DD(a[1],a[2])
 
-
-
 # idempotency
 convert(::Type{DD}, x::DD) = x
 
