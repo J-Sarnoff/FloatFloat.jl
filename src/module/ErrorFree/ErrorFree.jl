@@ -94,7 +94,7 @@ end
      x,y
 end
 
-  function eftSum3{T<:Float64}(a::T,b::T,c::T)
+function eftSum3{T<:Float64}(a::T,b::T,c::T)
     s,t = eftSum2(b, c)
     x,u = eftSum2(a, s)
     y,z = eftSum2(u, t)
