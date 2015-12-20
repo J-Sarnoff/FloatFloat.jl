@@ -27,11 +27,11 @@ export FF,    # constructor
        fluff  # softens (zeros low order part if eps(eps(high order part)) >= low order part)
 
 
-include("module/ErrorFree/ErrorFree.jl")
+include("module/ErrorFree.jl/src/ErrorFree.jl")
 using .ErrorFree
-include("module/Adjacent/Adjacent.jl")
+include("module/Adjacent.jl/src/Adjacent.jl")
 using .Adjacent
-include("module/RoundFast/RoundFast.jl")
+include("module/RoundFast.jl/src/RoundFast.jl")
 using .RoundFast
 
 
