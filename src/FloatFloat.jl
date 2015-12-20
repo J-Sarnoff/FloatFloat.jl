@@ -27,6 +27,15 @@ export FF,    # constructor
        fluff  # softens (zeros low order part if eps(eps(high order part)) >= low order part)
 
 
+include("type/FF.jl")
+include("type/conversion.jl")
+include("type/io.jl")
+
+include("number/compare.jl")
+include("number/inquire.jl")
+include("number/portion.jl")
+
+
 
 
 
