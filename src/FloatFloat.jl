@@ -23,7 +23,7 @@ import Base: convert, promote_rule,             # <--------------
     asinh, acosh, atanh, acsch, asech, acoth
  =#
 
-export DD,   # constructor
+export FF,   # constructor
        tidy  # cleans up numerical noise (!! look at the data before tidying up !!)
 
 
