@@ -1,9 +1,5 @@
 typealias SignedInt Union{Int64,Int32}
 
-FF(a::Float64) = FF(a,zero(Float64))
-FF{T<:Float64}(a::Tuple{T}) = FF(a[1])
-FF{T<:Float64}(a::Tuple{T,T}) = FF(a[1],a[2])
-
 # idempotency
 convert(::Type{FF}, x::FF) = x
 
@@ -47,8 +43,14 @@ end
 promote_rule(::Type{FF}, ::Type{Rational{BigInt}}) = FF
 
 # rational types
-convert{Q<:Union{Rational{Int64},Rational{Int32}}}(::Type{FF}, x::Type{Q}) = convert(FF, convert(Rational{BigInt},x))
-convert{Q<:Union{Rational{Int64},Rational{Int32}}}(::Type{Q}, x::FF) = convert(Q, convert(Rational{BigInt},x))
+convert(::Type{FF}, x::Type{Rational{Int64}}) = convert(FF, convert(Rational{BigInt},x))
+convert(::Type{FF}, x::Type{Rational{Int32}}) = convert(FF, convert(Rational{BigInt},x))
+
+function convert{Q<:Union{Rational{Int64},Rational{Int32}}}(::Type{FF}, x::Type{Q})
+    q = convert(Rational{BigInt},x)
+    conert(FF,q)
+end
+#convert{Q<:Union{Rational{Int64},Rational{Int32}}}(::Type{Q}, x::FF) = convert(Q, convert(Rational{BigInt},x))
 promote_rule{Q<:Union{Rational{Int64},Rational{Int32}}}(::Type{Q}, ::Type{FF}) = FF
 
 # autoprocessable types
@@ -94,3 +96,10 @@ for T in (:Float64, :Float32, :Float16, :AbstractFloat,
    @eval promote_rule(::Type{FF}, ::Type{($T)}) = FF
 end
 promote_rule{I<:Irrational}(::Type{FF}, ::Type{I}) = FF
+
+
+
+FF(a::Float64) = FF(a,zero(Float64))
+FF{T<:Float64}(a::Tuple{T}) = FF(a[1])
+FF{T<:Float64}(a::Tuple{T,T}) = FF(a[1],a[2])
+
