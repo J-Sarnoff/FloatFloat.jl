@@ -9,7 +9,7 @@ import Base: convert, promote_rule,             # <--------------
     zero, one, isinf, isnan, isfinite,          #               |
     abs, sign, signbit, copysign, flipsign,     #               |
     isequal, isless, (<),(<=),(==),(>=),(>),    #               |
-    ldexp, frexp, modf, eps,                    #               |
+    ldexp, frexp, modf, eps, exponent,          #               |
     (+),(-),(*),(/),(\),                        #               |
     sqrt, hypot,                                #               |
     round, floor, ceil, trunc, fld, cld,        #               |
@@ -23,9 +23,9 @@ import Base: convert, promote_rule,             # <--------------
     asinh, acosh, atanh, acsch, asech, acoth
  =#
 
-export FF,   # constructor
-       tidy  # cleans up numerical noise (!! look at the data before tidying up !!)
-
+export FF,    # constructor
+       tidy,  # cleans up numerical noise (!! look at the data before tidying up !!)
+       ulp    # unit last place
 
 include("module/ErrorFree.jl/src/ErrorFree.jl")
 using .ErrorFree

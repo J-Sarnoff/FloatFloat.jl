@@ -29,6 +29,18 @@ function eps(a::FF)
     end
 end
 
+ulp(a::FF) = eps(a)*0.5
+
+function exponent(a::FF)
+    if a.lo != 0.0
+        exponent(a.lo)
+    elseif a.hi != 0.0
+        exponent(a.hi)-precision(typeof(a.lo))-1
+    else
+        exponent(0.0)
+    end
+end
+
 
 function frexp(a::FF)
     frhi, xphi = frexp(a.hi)
