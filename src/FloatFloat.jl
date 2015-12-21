@@ -23,9 +23,10 @@ import Base: convert, promote_rule,             # <--------------
     asinh, acosh, atanh, acsch, asech, acoth
  =#
 
-export FF,    # constructor
-       tidy,  # cleans up numerical noise (!! look at the data before tidying up !!)
-       ulp    # unit last place
+export FF,     # constructor
+       tidy,   # cleans up numerical noise (!! look at the data before tidying up !!)
+       ulp,    # unit last place
+       stretch # opposite of trunc, extends away from zero to nearest integer
 
 include("module/ErrorFree.jl/src/ErrorFree.jl")
 using .ErrorFree
