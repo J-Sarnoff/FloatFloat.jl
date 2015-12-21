@@ -21,16 +21,44 @@ function convert(::Type{FF}, x::Float64, y::Float64)
 end
 promote_rule(::Type{FF}, ::Type{Float64}) = FF
 
+# accuracy protection: specify interconversion with Big types
+function convert(::Type{FF}, x::BigFloat)
+   hi,lo = nearest2(x)
+   FF(hi,lo)
+end
+function convert(::Type{BigFloat}, x::FF)
+    hi = convert(Rational{BigInt}, x.hi)
+    lo = convert(Rational{BigInt}, x.lo)
+     q = hi+lo
+    convert(BigFloat, q.num) / convert(BigFloat, q.den)
+end
+promote_rule(::Type{FF}, ::Type{BigFloat}) = FF
+
+function convert(::Type{FF}, x::Rational{BigInt})
+   bf = convert(BigFloat,x.num) + convert(BigFloat,x.den)
+   hi,lo = nearest2(bf)
+   FF(hi,lo)
+end
+function convert(::Type{Rational{BigInt}}, x::FF)
+    hi = convert(Rational{BigInt}, x.hi)
+    lo = convert(Rational{BigInt}, x.lo)
+    hi+lo
+end
+promote_rule(::Type{FF}, ::Type{Rational{BigInt}}) = FF
+
+# rational types
+convert{Q<:Union{Rational{Int64},Rational{Int32}}}(::Type{FF}, x::Type{Q}) = convert(FF, convert(Rational{BigInt},x))
+convert{Q<:Union{Rational{Int64},Rational{Int32}}}(::Type{Q}, x::FF) = convert(Q, convert(Rational{BigInt},x))
+promote_rule{Q<:Union{Rational{Int64},Rational{Int32}}}(::Type{Q}, ::Type{FF}) = FF
+
 # autoprocessable types
-for T in (:Int16, :Int32, :Int64, :Float16, :Float32,
-          :(Rational{Int32}), :(Rational{Int64}))
+for T in (:Int16, :Int32, :Int64, :Float16, :Float32)
     @eval begin
         convert(::Type{FF}, x::($T)) = convert(FF, convert(Float64,x))
         convert(::Type{$T}, x::FF) = convert(($T), FF.hi)
         promote_rule(::Type{FF}, ::Type{$T}) = FF
     end
 end
-
 
 # special numerical types
 convert(::Type{BigFloat}, a::AbstractString) = parse(BigFloat, a)
@@ -48,28 +76,13 @@ convert(::Type{FF}, x::AbstractFloat) = convert(FF, convert(Float64,x))
 convert(::Type{Integer}, x::FF) = convert(Int64, x.hi) + trunc(Int64, trunc(x.lo))
 convert(::Type{AbstractFloat}, x::FF) = x.hi
 
-
 convert(::Type{FF}, a::Tuple{Float64}) = FF(a[1])
 convert(::Type{FF}, a::Tuple{Float64,Float64}) = FF(a[1],a[2])
 convert(::Type{Tuple}, a::FF) = (a.hi,a.lo)
 convert(::Type{Tuple{Float64,Float64}}, a::FF) = (a.hi,a.lo)
 
-convert{T<:Signed}(::Type{FF}, a::Rational{T}) = convert(BigFloat, a)
-
-
-function convert(::Type{FF}, a::BigFloat)
-   hi,lo = nearest2(a)
-   FF(hi,lo)
-end
-convert(::Type{BigFloat}, a::FF) = parse(BigFloat,string(a.hi)) + parse(BigFloat,string(a.lo))
 convert(::Type{FF}, a::AbstractString) = convert(FF, convert(BigFloat,a))
-convert{I<:Integer}(::Type{FF}, a::Rational{I}) =
-    convert(FF, convert(BigFloat,a))
-
-convert{I<:BigInt}(::Type{Rational{I}}, a::FF)    =
-    convert(Rational{I},convert(BigFloat,a))
-convert{I<:SignedInt}(::Type{Rational{I}}, a::FF) =
-    trunc(T, convert(BigFloat, convert(Rational{BigInt}, a)))
+convert{I<:Integer}(::Type{FF}, a::Rational{I}) = convert(FF, convert(Rational{BigInt},a))
 
 convert{I<:Irrational}(::Type{FF}, x::I) = convert(FF, convert(BigFloat,x))
 
