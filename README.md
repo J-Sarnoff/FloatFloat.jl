@@ -13,19 +13,19 @@ Pkg.clone("https://github.com/J-Sarnoff/FloatFloat.jl")
 ```julia
 using FloatFloat
 
-dd10 = DD( 10 )
-ddpi = DD( big(pi) )
-ddsqrt2 = sqrt( DD( 2 ) )
+ff10 = FF( 10 )
+ffpi = FF( big(pi) )
+ffsqrt2 = sqrt( FF( 2 ) )
 
-ddrecip = 1/ddsqrt2
-showcompact(ddsqrt2*ddrecip)
+ffrecip = 1/ffsqrt2
+showcompact(ffsqrt2*ffrecip)
 
-tst = [(ddsqrt2*ddpi*ddrecip - ddpi), (ddpi - ddsqrt2*ddpi*ddrecip)]
+tst = [(ffsqrt2*ffpi*ffrecip - ffpi), (ffpi - ffsqrt2*ffpi*ffrecip)]
 tidy(tst)
 
 
 using Polynomials
 p = Poly([4,-2,-1,5,1,-1]);
-polyval(p, ddsqrt2)
+polyval(p, ffsqrt2)
 
 ```
