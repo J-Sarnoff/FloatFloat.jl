@@ -7,7 +7,7 @@ This representation is known as "double-double" (see refs.md)
 
 #    type FF (FloatFloat)
 
-immutable DD <: Real
+immutable FF <: Real
     hi::Float64
     lo::Float64
 end

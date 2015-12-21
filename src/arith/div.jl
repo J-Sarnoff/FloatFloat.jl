@@ -1,7 +1,7 @@
 
 # division
 
-function (/){T<:DD}(a::T,b::T)
+function (/){T<:FF}(a::T,b::T)
   q1 = a.hi / b.hi
   r  = a - (q1 * b)
 
@@ -12,6 +12,6 @@ function (/){T<:DD}(a::T,b::T)
 
   q1,q2 = eftSum2inOrder(q1, q2)
   q1,q2 = eftSum3as2(q1,q2,q3)
-  DD(q1,q2)
+  FF(q1,q2)
 end
 

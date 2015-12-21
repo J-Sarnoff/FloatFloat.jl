@@ -1,7 +1,7 @@
 
 const TieConcat = "⁀"
 
-function show(io::IO, x::DD)
+function show(io::IO, x::FF)
    # bfprec = get_bigfloat_precision()
    # set_bigfloat_precision(400)
    bf = convert(BigFloat, x)
@@ -10,40 +10,40 @@ function show(io::IO, x::DD)
    print(io,s)
 end
 
-@inline function compactHi(x::DD)
+@inline function compactHi(x::FF)
      @sprintf("%0.7g", x.hi)
 end
-@inline function compactLo(x::DD)
+@inline function compactLo(x::FF)
      @sprintf("%0.5g", x.lo)
 end
 
-function halfcompact(x::DD)
+function halfcompact(x::FF)
     shi = compactHi(x)
     slo = compactLo(x)
     string(shi, TieConcat, slo)
 end
 
-function showcompact(io::IO, x::DD)
+function showcompact(io::IO, x::FF)
     s = string(compactHi(x), TieConcat, compactLo(x))
     print(io,s)
 end
 
 # read(IO, x), write(IO, x)
 
-function read(io::IO, ::Type{DD})
+function read(io::IO, ::Type{FF})
     hi = read(io, Float64)
     lo = read(io, Float64)
-    DD(hi,lo)
+    FF(hi,lo)
 end
-function write(io::IO, x::DD)
+function write(io::IO, x::FF)
     write(io, x.hi)
     write(io, x.lo)
 end
 
 
-function parse(::Type{DD}, str::AbstractString)
-    if !(startswith(str,DD_typename))
-        convert(DD, parse(BigFloat,str))
+function parse(::Type{FF}, str::AbstractString)
+    if !(startswith(str,FF_typename))
+        convert(FF, parse(BigFloat,str))
     else
         s = str[10:(end-1)]
         hilo = split(s,',')
@@ -54,15 +54,15 @@ function parse(::Type{DD}, str::AbstractString)
         hi = parse(Float64,shi)
         lo = parse(Float64,slo)
         hi,lo = eftSum2(hi,lo)
-        DD(hi,lo)
-    end    
+        FF(hi,lo)
+    end
 end
 
-function hex(x::DD)
+function hex(x::FF)
     hi,lo = x.hi, x.lo
     shi = @sprintf("%a",hi)
     slo = @sprintf("%a",lo)
-    s = string(DD_typename,"(",shi,", ",slo,")")
+    s = string(FF_typename,"(",shi,", ",slo,")")
     s
 end
 

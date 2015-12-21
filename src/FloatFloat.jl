@@ -7,12 +7,12 @@ import Base: convert, promote_rule,             # <--------------
     read, write, show, showcompact,             #  dispatching  |
     string, parse, hex,                         #               |
     zero, one, isinf, isnan, isfinite,          #               |
-    abs, sign, signbit, copysign, flipsign,     #               |    
+    abs, sign, signbit, copysign, flipsign,     #               |
     isequal, isless, (<),(<=),(==),(>=),(>),    #               |
     ldexp, frexp, modf,                         #               |
     (+),(-),(*),(/),(\),                        #               |
     sqrt, hypot,                                #               |
-    round, floor, ceil, trunc, fld, cld,        #               |    
+    round, floor, ceil, trunc, fld, cld,        #               |
     div, rem, divrem, mod, fldmod, (%),         # <--------------
     (^), fma
 #=
@@ -35,7 +35,7 @@ include("module/RoundFast.jl/src/RoundFast.jl")
 using .RoundFast
 
 
-include("type/DD.jl")
+include("type/FF.jl")
 include("type/conversion.jl")
 include("type/nearest.jl")
 include("type/io.jl")

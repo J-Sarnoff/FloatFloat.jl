@@ -6,10 +6,10 @@
      for a in [1e-15..1e18]
       relerr ~1.3e-32  (106 bits)
 =#
-function sqrt(a::DD)
+function sqrt(a::FF)
     if a.hi <= zero(Float64)
        if a.hi == zero(Float64)
-           return zero(DD)
+           return zero(FF)
        else
            throw(ArgumentError("sqrt expects a nonnegative base"))
        end
@@ -18,22 +18,22 @@ function sqrt(a::DD)
     end
 
     if (a.hi < 1.0e-7)  # -log2(1.0e-7) < (1/2) Float64 significand bits
-        return one(DD) / sqrt(one(DD)/a)
+        return one(FF) / sqrt(one(FF)/a)
     end
 
     # initial approximation to 1/sqrt(a)
-    r = DD(one(Float64)/sqrt(a.hi), zero(Float64))
+    r = FF(one(Float64)/sqrt(a.hi), zero(Float64))
 
-    r = r + divby2( r * (one(DD) - (a*(r*r))) )
-    r = r + divby2( r * (one(DD) - (a*(r*r))) )
-    r = r + divby2( r * (one(DD) - (a*(r*r))) )
+    r = r + divby2( r * (one(FF) - (a*(r*r))) )
+    r = r + divby2( r * (one(FF) - (a*(r*r))) )
+    r = r + divby2( r * (one(FF) - (a*(r*r))) )
 
     r = a*r
     divby2(r + a/r)
 end
 
 
-function hypot(a::DD, b::DD)
+function hypot(a::FF, b::FF)
     a = abs(a)
     b = abs(b)
     t, x = min(a,b), max(a,b)
