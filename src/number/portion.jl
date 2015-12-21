@@ -19,6 +19,16 @@ end
 @inline copysign(a::FF,b::Integer) = copysign(a,convert(Float64,b))
 @inline copysign(a::FF,b::FF) = copysign(a,b.hi)
 
+function eps(a::FF)
+    if a.lo != 0.0
+        eps(a.lo)
+    elseif a.hi != 0.0
+        eps(eps(a.hi)*0.5)
+    else
+        eps(0.0)
+    end
+end
+
 
 function frexp(a::FF)
     frhi, xphi = frexp(a.hi)
