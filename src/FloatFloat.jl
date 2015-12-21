@@ -9,7 +9,7 @@ import Base: convert, promote_rule,             # <--------------
     zero, one, isinf, isnan, isfinite,          #               |
     abs, sign, signbit, copysign, flipsign,     #               |
     isequal, isless, (<),(<=),(==),(>=),(>),    #               |
-    ldexp, frexp, modf,                         #               |
+    ldexp, frexp, modf, eps,                    #               |
     (+),(-),(*),(/),(\),                        #               |
     sqrt, hypot,                                #               |
     round, floor, ceil, trunc, fld, cld,        #               |
