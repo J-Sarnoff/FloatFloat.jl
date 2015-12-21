@@ -19,6 +19,7 @@ end
 @inline copysign(a::FF,b::Integer) = copysign(a,convert(Float64,b))
 @inline copysign(a::FF,b::FF) = copysign(a,b.hi)
 
+
 function eps(a::FF)
     if a.lo != 0.0
         eps(a.lo)
@@ -29,6 +30,8 @@ function eps(a::FF)
     end
 end
 
+
+ulp(a::AbstractFloat) = eps(a)*0.5
 ulp(a::FF) = eps(a)*0.5
 
 function exponent(a::FF)
@@ -76,6 +79,9 @@ end
 stretch is the opposite of trunc()
 it extends to the nearest integer away from zero
 """
+function (stretch)(a::AbstractFloat)
+    a.hi >= zero(Float64) ? ceil(a) : floor(a)
+end
 function (stretch)(a::FF)
     a.hi >= zero(Float64) ? ceil(a) : floor(a)
 end
