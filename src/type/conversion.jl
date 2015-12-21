@@ -23,15 +23,16 @@ function convert(::Type{FF}, x::BigFloat)
    FF(hi,lo)
 end
 function convert(::Type{BigFloat}, x::FF)
-    hi = convert(Rational{BigInt}, x.hi)
-    lo = convert(Rational{BigInt}, x.lo)
-     q = hi+lo
-    convert(BigFloat, q.num) / convert(BigFloat, q.den)
+    fr,ex = frexp(x.hi)
+    hi = ldexp( big(trunc(fr * 2^53)), ex-53)
+    fr,ex = frexp(x.lo)
+    lo = ldexp( big(trunc(fr * 2^53)), ex-53)
+    hi+lo
 end
 promote_rule(::Type{FF}, ::Type{BigFloat}) = FF
 
 function convert(::Type{FF}, x::Rational{BigInt})
-   bf = convert(BigFloat,x.num) + convert(BigFloat,x.den)
+   bf = convert(BigFloat,x.num) / convert(BigFloat,x.den)
    hi,lo = nearest2(bf)
    FF(hi,lo)
 end
@@ -43,15 +44,9 @@ end
 promote_rule(::Type{FF}, ::Type{Rational{BigInt}}) = FF
 
 # rational types
-convert(::Type{FF}, x::Type{Rational{Int64}}) = convert(FF, convert(Rational{BigInt},x))
-convert(::Type{FF}, x::Type{Rational{Int32}}) = convert(FF, convert(Rational{BigInt},x))
-
-function convert{Q<:Union{Rational{Int64},Rational{Int32}}}(::Type{FF}, x::Type{Q})
-    q = convert(Rational{BigInt},x)
-    conert(FF,q)
-end
-#convert{Q<:Union{Rational{Int64},Rational{Int32}}}(::Type{Q}, x::FF) = convert(Q, convert(Rational{BigInt},x))
-promote_rule{Q<:Union{Rational{Int64},Rational{Int32}}}(::Type{Q}, ::Type{FF}) = FF
+convert{I<:Signed}(::Type{FF}, x::Rational{I}) = convert(FF, convert(Rational{BigInt},x))
+convert{I<:Signed}(::Type{Rational{I}}, x::FF) = convert(Rational{I}, convert(Rational{BigInt},x))
+promote_rule{I<:Signed}(::Type{Rational{I}}, ::Type{FF}) = FF
 
 # autoprocessable types
 for T in (:Int16, :Int32, :Int64, :Float16, :Float32)
@@ -63,10 +58,6 @@ for T in (:Int16, :Int32, :Int64, :Float16, :Float32)
 end
 
 # special numerical types
-convert(::Type{BigFloat}, a::AbstractString) = parse(BigFloat, a)
-convert{I<:Integer}(::Type{BigFloat}, a::I) = convert(BigFloat, string(a))
-convert{I<:Integer}(::Type{BigFloat}, a::Rational{I}) =
-    convert(BigFloat,convert(BigInt,num(a))) / convert(BigFloat,convert(BigInt, den(a)))
 
 convert{S<:Symbol}(::Type{FF}, x::Irrational{S}) = convert(FF, convert(BigFloat,x))
 FF{I<:Irrational}(x::I) = convert(FF, convert(BigFloat,x))
@@ -84,7 +75,7 @@ convert(::Type{Tuple}, a::FF) = (a.hi,a.lo)
 convert(::Type{Tuple{Float64,Float64}}, a::FF) = (a.hi,a.lo)
 
 convert(::Type{FF}, a::AbstractString) = convert(FF, convert(BigFloat,a))
-convert{I<:Integer}(::Type{FF}, a::Rational{I}) = convert(FF, convert(Rational{BigInt},a))
+#convert{I<:Integer}(::Type{FF}, a::Rational{I}) = convert(FF, convert(Rational{BigInt},a))
 
 convert{I<:Irrational}(::Type{FF}, x::I) = convert(FF, convert(BigFloat,x))
 

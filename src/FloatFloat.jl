@@ -14,7 +14,7 @@ import Base: convert, promote_rule,             # <--------------
     sqrt, hypot,                                #               |
     round, floor, ceil, trunc, fld, cld,        #               |
     div, rem, divrem, mod, fldmod, (%),         # <--------------
-    (^), fma
+    (^), fma, Rational
 #=
     exp, log, log2, log10, expm1, log1p,
     sin, cos, tan, csc, sec, cot,
