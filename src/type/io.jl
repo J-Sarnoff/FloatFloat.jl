@@ -2,11 +2,9 @@
 const TieConcat = "⁀"
 
 function show(io::IO, x::FF)
-   # bfprec = get_bigfloat_precision()
-   # set_bigfloat_precision(400)
+   (160 <= get_bigfloat_precision()) | set_bigfloat_precision(160)
    bf = convert(BigFloat, x)
    s  = @sprintf("%0.31g",bf)
-   # set_bigfloat_precision(bfprec)
    print(io,s)
 end
 
