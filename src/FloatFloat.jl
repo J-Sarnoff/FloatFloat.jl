@@ -56,3 +56,4 @@ include("arith/sqrt.jl")
 
 
 end # module FloatFloat
+set_bigfloat_precision(160) # used when printing numbers
