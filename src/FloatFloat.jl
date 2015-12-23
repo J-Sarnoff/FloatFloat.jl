@@ -5,7 +5,6 @@ module FloatFloat
 #                                                   FloatFloat
 import Base: convert, promote_rule,             # <--------------
     read, write, show, showcompact,             #  dispatching  |
-    string, parse, hex,                         #               |
     zero, one, isinf, isnan, isfinite,          #               |
     abs, sign, signbit, copysign, flipsign,     #               |
     isequal, isless, (<),(<=),(==),(>=),(>),    #               |
@@ -14,7 +13,7 @@ import Base: convert, promote_rule,             # <--------------
     sqrt, hypot,                                #               |
     round, floor, ceil, trunc, fld, cld,        #               |
     div, rem, divrem, mod, fldmod, (%),         # <--------------
-    (^), fma, Rational
+    (^), fma, Rational,  string, parse, hex,
 
 
 export FF,     # constructor
