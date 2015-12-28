@@ -23,10 +23,8 @@ function convert(::Type{FF}, x::BigFloat)
    FF(hi,lo)
 end
 function convert(::Type{BigFloat}, x::FF)
-    fr,ex = frexp(x.hi)
-    hi = ldexp( big(trunc(fr * 2^53)), ex-53)
-    fr,ex = frexp(x.lo)
-    lo = ldexp( big(trunc(fr * 2^53)), ex-53)
+    hi = parse(BigFloat, string(x.hi))
+    lo = parse(BigFloat, string(x.lo))
     hi+lo
 end
 promote_rule(::Type{FF}, ::Type{BigFloat}) = FF
