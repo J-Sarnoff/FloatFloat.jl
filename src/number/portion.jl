@@ -19,11 +19,7 @@ end
 @inline copysign(a::FF,b::Integer) = copysign(a,convert(Float64,b))
 @inline copysign(a::FF,b::FF) = copysign(a,b.hi)
 
-<<<<<<< Updated upstream
 eps(::Type{FF}) = 4.930380657631324e-32 # eps(eps(1.0))
-=======
-eps(::Type{FF}) = 4.930380657631324e-32
->>>>>>> Stashed changes
 
 function eps(a::FF)
     if a.lo != 0.0
