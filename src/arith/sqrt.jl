@@ -31,13 +31,3 @@ function sqrt(a::FF)
     r = a*r
     divby2(r + a/r)
 end
-
-
-function hypot(a::FF, b::FF)
-    a = abs(a)
-    b = abs(b)
-    t, x = min(a,b), max(a,b)
-    t = t/a
-    x * sqrt(1.0 + t*t)
-end
-
