@@ -45,5 +45,5 @@ include("arith/sub.jl")
 include("arith/mul.jl")
 include("arith/div.jl")
 include("arith/sqrt.jl")
-
+include("arith/hypot.jl")
 
