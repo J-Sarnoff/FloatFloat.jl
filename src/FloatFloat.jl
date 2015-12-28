@@ -13,7 +13,7 @@ import Base: convert, promote_rule,             # <--------------
     sqrt, hypot,                                #               |
     round, floor, ceil, trunc, fld, cld,        #               |
     div, rem, divrem, mod, fldmod, (%),         # <--------------
-    (^), fma, Rational,  string, parse, hex,
+    (^), fma, Rational,  string, parse, hex
 
 
 export FF,     # constructor
