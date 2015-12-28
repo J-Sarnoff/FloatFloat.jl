@@ -13,7 +13,7 @@ function sqrt(a::FF)
        else
            throw(ArgumentError("sqrt expects a nonnegative base"))
        end
-    elseif (a.hi < 1.0e-18) | (a.hi > 1.0e18)
+    elseif (a.hi < 1.0e-15) | (a.hi > 1.0e18)
         throw(ArgumentError("sqrt arg ($a) outside domain"))
     end
 
